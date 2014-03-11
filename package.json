@@ -1,11 +1,11 @@
 {
-  "name": "docdoc-theme-foundation",
+  "name": "docdoc-theme-cards",
   "version": "0.0.1",
-  "description": "docdoc theme based on zurb foundation",
+  "description": "An improved theme for docdoc",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/preciousforever/docdoc-theme-foundation"
+    "url": "https://github.com/preciousforever/docdoc-theme-cards"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
