@@ -1,0 +1,35 @@
+.cards
+	column-count 3
+	column-gap 24px
+	column-width 306px
+	width 309px * 3 + 24px * 2
+	.card
+		width 306px
+		float left
+		margin 0 0 24px 0
+		background white
+		box-shadow 0px 0px 4px 0px rgba(0,0,0,0.10);
+		padding 14px 14px 21px
+		-webkit-column-break-inside avoid
+
+		h4
+			margin 0
+			openSans()
+			text-align center
+			font-size 21px
+			text-transform uppercase
+			a
+				text-decoration none
+
+		ul
+			padding 0
+			list-style none
+			li a
+				display block
+				openSans()
+				line-height 26px
+				width 100%
+				text-decoration none
+				border-bottom 1px solid white
+				&:hover
+					border-bottom 1px solid lighterGrey

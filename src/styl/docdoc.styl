@@ -1,3 +1,5 @@
+@import 'nib'
+
 black = #1F1F24
 darkGrey = #3D3E43
 grey = #8B9599
@@ -140,55 +142,14 @@ body
 			border-left 3px solid #CBCBCB
 			padding-left 10px
 			margin 5px 0 10px
+		ul.level-3 li 
+			height 25px
+			text-overflow ellipsis
+			overflow hidden
 		ul.level-3 li a
 			font-weight 400
 		ul.level-3 li.selected a
 			color selected
 
-
-.chapter
-	cardWidth = 976px
-	cardPadding = 18px
-	cardMargin = 0 0 30px 0
-	margin-left navWidth + 24
-
-	section :last-child
-		margin-bottom 0
-
-	section :first-child
-		margin-top 0
-
-	header
-	section.header
-		background-color #DBDBDB
-		color darkGrey
-		padding cardPadding
-		margin cardMargin
-		width cardWidth
-
-	section.card
-		float left
-		width cardWidth
-		background linear-gradient(to right, white (cardWidth / 2 - 2), lighterGrey (cardWidth / 2 - 2), lighterGrey (cardWidth / 2 + 2),lightestGrey (cardWidth / 2 + 2));
-
-		.text
-			float left
-			padding cardPadding
-			width (cardWidth / 2 - 1)
-
-		.asset
-			float left
-			padding 22px
-			width (cardWidth / 2 - 1)
-			.asset-annotation
-				openSans()
-				padding 2px 0
-				font-size 11px
-				text-align right
-				line-height 15px
-				color grey
-				a
-					color grey
-	section.level-2
-		margin cardMargin
-		box-shadow 0px 0px 4px 0px rgba(0,0,0,0.10);
+@import "chapter.styl";
+@import "index.styl";

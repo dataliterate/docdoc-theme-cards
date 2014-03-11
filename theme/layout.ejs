@@ -106,9 +106,9 @@
   <% } %>
 
   <% if(webpath == '') { // CARD LAYOUT%>
-  <section class="section">
-    <div class="col-text">
+  <section class="cards">
     <% nav.children.forEach(function(level1) { %>
+      <div class="content card">
       <h4>
         <% if (level1.packets.length) { %>
         <a href="<%= docdoc.path(level1.webpath + 'index.html') %>">
@@ -129,6 +129,7 @@
         <% }); %>
         </ul>
       <% }; %>
+      </div>
     <% }); %>
     </div>
   </section>
