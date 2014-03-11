@@ -17,6 +17,9 @@
         ;
     }
     var addSubNav = function() {
+      if(!$('.chapter').find('h2').size()) {
+        return;
+      }
       var h = '<ul class="level-3">';
       $('.chapter').find('h2').each(function() {
         var $el = $(this);
