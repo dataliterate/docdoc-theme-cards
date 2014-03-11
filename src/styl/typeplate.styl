@@ -1,0 +1,36 @@
+// Typelate.com port stylus
+
+
+
+// Variable default
+
+// Base type variable
+weight = normal
+line-height = 1.65
+font-size = 112.5
+font-base = 16 * (font-size/100)
+font-family = serif
+font-family-sans = sans-serif
+font-properties = weight, line-height, font-size, font-family
+serifboolean = true
+base-color = #222222
+
+
+// Modular Scale Values
+// http://typecast.com/blog/contrast-through-scale
+sizes = tera 117,giga 90,mega 72,alpha 60,beta 48, gamma 36,delta 24,epsilon 21, zeta 18
+type-scale-unit-value = em
+
+// Colors
+body-color = #444
+header-color = #222
+
+// Wordwrap
+indent-val=1.5em
+
+@import '../vendor/stylus-typelate/lib/base.styl' // Base font setting
+@import '../vendor/stylus-typelate/lib/scale.styl' //Scale Header
+@import '../vendor/stylus-typelate/lib/header.styl' //Header set
+@import '../vendor/stylus-typelate/lib/color.styl'
+@import '../vendor/stylus-typelate/lib/wordbreak.styl'
+@import '../vendor/stylus-typelate/lib/indenting.styl'

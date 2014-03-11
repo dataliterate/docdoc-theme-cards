@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= title %> | <%= site.title %> <%= site.version %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="<%= docdoc.path('_assets/docdoc.css') %>" type="text/css">
+
+  <script src="<%= docdoc.path('_assets/js/jquery.js') %>"></script>
+  
+  <script>
+    function convertToSlug(s) {
+      return s
+        .toLowerCase()
+        .replace(/[^\w ]+/g,'')
+        .replace(/ +/g,'-')
+        ;
+    }
+    var addSubNav = function() {
+      var h = '<ul class="level-3">';
+      $('.chapter').find('h2').each(function() {
+        var $el = $(this);
+        var id = $el.attr('id');
+        var slug = id;
+        if(typeof id == 'undefined') {
+          slug = convertToSlug($el.text());
+          $el.attr('id', slug);
+        }
+        h += '<li><a href="#' + slug + '">' + $el.text() + '</a></li>';
+      })
+      h += '</ul>';
+      $('ul.level-2 li.selected').append(h);
+    }
+    var fixChapterHeight = function() {
+      return;
+      var $chapter = $('.chapter');
+      var dh = $(document).height();
+      if(dh <= $chapter.height()) {
+        return;
+      }
+      console.log(dh, $chapter.height());
+      var diff = dh - $chapter.height();
+      $chapter.height(dh).append('<section><div class="text" style="height:' + diff + 'px"><div class="content">x</div></div><div class="asset" style="height:' + diff + 'px"></div></section>');
+    }
+    $(document).ready(function() {
+      fixChapterHeight();
+      addSubNav();
+      $(window).resize(fixChapterHeight);
+    });
+  </script>
+
+  <%- pluginAssets %>
+</head>
+<body>
+
+<div class="docdoc">
+
+<div class="nav">
+  <div class="branding">
+    <a href="<%= docdoc.path('index.html') %>">
+      <%= site.title %>
+    </a>
+  </div>
+  <nav>
+    <% nav.children.forEach(function(level1) { %>
+      <% selected = (level1.children.length && (level1.webpath == webpath || (parent && parent.webpath != '' && level1.webpath.indexOf(parent.webpath) == 0))) %>
+      <% if(selected) { %>
+      <ul class="level-1 selected">
+      <% } else { %>
+      <ul class="level-1">
+      <% } %>
+        <li>
+        <% if (level1.packets.length) { %>
+        <a class="level-1-title" href="<%= docdoc.path(level1.webpath + 'index.html') %>">
+          <%= level1.title %>
+        </a>
+        <% } else { %>
+          <%= level1.title %>
+        <% } %>
+      <% if(selected) { %>
+        <ul class="level-2">
+        <% level1.children.forEach(function(level2) { %>
+          <li <% if(level2.webpath == webpath) { %>class="selected"<% } %>>
+            <a href="<%= docdoc.path(level2.webpath + 'index.html') %>">
+              <%= level2.title %> 
+            </a>
+          </li>
+        <% }); %>
+        </ul>
+      <% }; %>
+        </li>
+      </ul>
+    <% }); %>
+  </nav>
+</div>
+<div class="chapter">
+
+  <% if(!sections.length || sections[0].level != 1) { %>
+  <header>
+    <div class="text">
+      <div class="content">
+        <h1><%= title %></h1>
+      </div>
+    </div>
+  </header>
+  <% } %>
+
+  <% if(webpath == '') { // CARD LAYOUT%>
+  <section class="section">
+    <div class="col-text">
+    <% nav.children.forEach(function(level1) { %>
+      <h4>
+        <% if (level1.packets.length) { %>
+        <a href="<%= docdoc.path(level1.webpath + 'index.html') %>">
+          <%= level1.title %>
+        </a>
+        <% } else { %>
+          <%= level1.title %>
+        <% } %>
+      </h4>
+      <% if(level1.children.length) { %>
+        <ul>
+        <% level1.children.forEach(function(level2) { %>
+          <li <% if(level2.webpath == webpath) { %>class="selected"<% } %>>
+            <a href="<%= docdoc.path(level2.webpath + 'index.html') %>">
+              <%= level2.title %>
+            </a>
+          </li>
+        <% }); %>
+        </ul>
+      <% }; %>
+    <% }); %>
+    </div>
+  </section>
+  <% } %>
+
+  <%
+  levelTwoIsOpen = false;
+  levelTwoJustOpened = false;
+  sections.forEach(function(section, i) { %>
+
+  <%
+    if(
+         section.level != -1
+      || (sections[0].level != 1 && i == 0)
+      || (sections[0].level == 1 && i == 1)
+      ) { %>
+
+    <%
+      if(section.level < 3 && levelTwoIsOpen) {
+        levelTwoIsOpen = false;
+      %>
+      </section>
+    <% } %>
+    <%
+      if(
+          section.level == 2
+        || (sections[0].level != 1 && i == 0) // first
+        || (sections[0].level == 1 && i == 1) // first, if custom header
+        ) {
+        levelTwoIsOpen = true;
+        levelTwoJustOpened = true;
+        section.level = 2;
+      }
+    %>
+    <% if(section.level == 1) { %>
+      <section class="header level-<%- section.level %>">
+    <% } else { %>
+      <section class="card level-<%- section.level %>">
+    <% } %>
+  <% } else { %>
+  <section class="card">
+  <% } %>
+    <div class="text">
+      <div class="content">
+        <%- section.content %>
+      </div>
+    </div>
+    <div class="asset">
+      <div class="content">
+        <%- section.asset %>
+      </div>
+    </div>
+  <%
+    if(levelTwoJustOpened) {
+      levelTwoJustOpened = false;
+    } else {
+  %>
+  </section>
+  <% } %>
+
+  <% }); %>
+</div>
+
+</div>
+</body>
+</html>
