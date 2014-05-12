@@ -1,3 +1,8 @@
+@font-face{font-family:OpenSans;font-style:normal;font-weight:400;src:url("fonts/Open_Sans/OpenSans-Regular.ttf")}
+@font-face{font-family:OpenSans;font-style:normal;font-weight:600;src:url("fonts/Open_Sans/OpenSans-Bold.ttf")}
+@font-face{font-family:OpenSans;font-style:normal;font-weight:800;src:url("fonts/Open_Sans/OpenSans-ExtraBold.ttf")}
+@font-face{font-family:SourceCodePro;font-style:normal;font-weight:400;src:url("fonts/Source_Code_Pro/SourceCodePro-Regular.ttf")}
+@font-face{font-family:SourceCodePro;font-style:normal;font-weight:600;src:url("fonts/Source_Code_Pro/SourceCodePro-Semibold.ttf")}
 /* normalize.css v2.1.2 | MIT License | git.io/normalize */
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
 audio,canvas,video{display:inline-block}
@@ -40,9 +45,9 @@ body:before,body:after{content:"";display:table}
 body:after{clear:both}
 *,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 a{color:#1f1f24}
-h1{font-family:OpenSans,Monaco;color:#1f1f24;margin:0;font-size:30px;letter-spacing:-1px}
-h2{font-family:OpenSans,Monaco;color:#1f1f24;margin:0;color:#db4d41}
-h3{font-family:OpenSans,Monaco;color:#1f1f24;margin:0}
+h1{font-family:OpenSans,Monaco;color:#1f1f24;font-weight:600;margin:0;font-size:30px;letter-spacing:-1px}
+h2{font-family:OpenSans,Monaco;color:#1f1f24;font-weight:600;margin:0;color:#db4d41}
+h3{font-family:OpenSans,Monaco;color:#1f1f24;font-weight:600;margin:0}
 p,ul{font-family:'Helvetica Neue',Monaco;color:#1f1f24;color:drakGrey;font-size:15px;line-height:22px}
 ul{list-style:circle;padding-left:36px}
 code{background-color:#faf9bd}
@@ -57,7 +62,7 @@ body{padding:30;margin:0;background:#e2e2e2}
 .nav nav a{text-decoration:none}
 .nav nav ul{display:none}
 .nav nav ul.selected,.nav nav ul.selected ul{display:block}
-.nav nav ul.level-1 > li a.level-1-title{font-weight:800;font-size:15px;color:#3d3e43;text-transform:uppercase}
+.nav nav ul.level-1 > li a.level-1-title{font-family:OpenSans,Monaco;color:#1f1f24;font-weight:800;font-size:15px;color:#3d3e43;text-transform:uppercase}
 .nav nav ul.level-2{line-height:25px;margin:5px 0 0}
 .nav nav ul.level-2 li a{font-weight:800;font-size:13px;color:#8b9599}
 .nav nav ul.level-2 li.selected a{color:#3d3e43}
@@ -65,19 +70,23 @@ body{padding:30;margin:0;background:#e2e2e2}
 .nav nav ul.level-3 li{height:25px;-o-text-overflow:ellipsis;text-overflow:ellipsis;overflow:hidden}
 .nav nav ul.level-3 li a{font-weight:400}
 .nav nav ul.level-3 li.selected a{color:#1c92df}
+.plugin-image img{width:440px}
 .chapter{margin-left:200px;}
 .chapter section :last-child{margin-bottom:0}
 .chapter section :first-child{margin-top:0}
 .chapter header,.chapter section.header{background-color:#dbdbdb;color:#3d3e43;padding:18px;margin:0 0 30px 0;width:976px}
 .chapter section.card{float:left;width:976px;background:-webkit-linear-gradient(left, #fffefe 486px, #eee 486px, #eee 490px, #f4f4f4 490px);background:-moz-linear-gradient(left, #fffefe 486px, #eee 486px, #eee 490px, #f4f4f4 490px);background:-o-linear-gradient(left, #fffefe 486px, #eee 486px, #eee 490px, #f4f4f4 490px);background:-ms-linear-gradient(left, #fffefe 486px, #eee 486px, #eee 490px, #f4f4f4 490px);background:linear-gradient(to right, #fffefe 486px, #eee 486px, #eee 490px, #f4f4f4 490px);}
-.chapter section.card .text{float:left;padding:18px;width:487px}
+.chapter section.card .text{float:left;padding:18px;width:487px;}
+.chapter section.card .text pre{width:100%;padding:5px 0;border-top:1px solid RGBA(0,0,0,.1);border-bottom:1px solid RGBA(0,0,0,.1);line-height:1.3em}
+.chapter section.card .text pre code{font-family:SourceCodePro;background:none;font-weight:600}
+.chapter section.card .text code{font-family:SourceCodePro;background:#faf9bd;font-size:14px}
 .chapter section.card .asset{float:left;padding:22px;width:487px;}
 .chapter section.card .asset .asset-annotation{font-family:OpenSans,Monaco;color:#1f1f24;padding:2px 0;font-size:11px;text-align:right;line-height:15px;color:#8b9599;}
 .chapter section.card .asset .asset-annotation a{color:#8b9599}
 .chapter section.level-2{margin:0 0 30px 0;-webkit-box-shadow:0 0 4px 0 rgba(0,0,0,0.1);box-shadow:0 0 4px 0 rgba(0,0,0,0.1)}
 .cards{-webkit-column-count:3;-moz-column-count:3;column-count:3;-webkit-column-gap:24px;-moz-column-gap:24px;column-gap:24px;column-width:306px;width:975px;}
 .cards .card{width:306px;float:left;margin:0 0 24px 0;background:#fffefe;-webkit-box-shadow:0 0 4px 0 rgba(0,0,0,0.1);box-shadow:0 0 4px 0 rgba(0,0,0,0.1);padding:14px 14px 21px;-webkit-column-break-inside:avoid;}
-.cards .card h4{margin:0;font-family:OpenSans,Monaco;color:#1f1f24;text-align:center;font-size:21px;text-transform:uppercase;}
+.cards .card h4{margin:0;font-family:OpenSans,Monaco;color:#1f1f24;font-weight:600;margin:0;text-align:center;font-size:21px;text-transform:uppercase;}
 .cards .card h4 a{text-decoration:none}
 .cards .card ul{padding:0;list-style:none;}
 .cards .card ul li a{display:block;font-family:OpenSans,Monaco;color:#1f1f24;line-height:26px;width:100%;text-decoration:none;border-bottom:1px solid #fffefe;}

@@ -15,9 +15,42 @@ headlineRed = #DB4D41
 
 navWidth = 176px
 
+@font-face
+	font-family OpenSans
+	font-style normal
+	font-weight 400
+	src url(fonts/Open_Sans/OpenSans-Regular.ttf)
+
+@font-face
+	font-family OpenSans
+	font-style normal
+	font-weight 600
+	src url(fonts/Open_Sans/OpenSans-Bold.ttf)
+
+@font-face
+	font-family OpenSans
+	font-style normal
+	font-weight 800
+	src url(fonts/Open_Sans/OpenSans-ExtraBold.ttf)
+
+@font-face
+	font-family SourceCodePro
+	font-style normal
+	font-weight 400
+	src url(fonts/Source_Code_Pro/SourceCodePro-Regular.ttf)
+
+@font-face
+	font-family SourceCodePro
+	font-style normal
+	font-weight 600
+	src url(fonts/Source_Code_Pro/SourceCodePro-Semibold.ttf)
+
 openSans()
 	font-family OpenSans, Monaco
 	color black
+
+sourceCodePro()
+	font-family SourceCodePro
 
 helveticaNeue()
 	font-family 'Helvetica Neue', Monaco
@@ -28,7 +61,7 @@ helveticaNeue()
 //@import "typeplate.styl";
 
 *, *:before, *:after {
-  box-sizing(border-box)
+	box-sizing(border-box)
 }
 
 a
@@ -36,6 +69,7 @@ a
 
 headline()
 	openSans()
+	font-weight 600
 	margin 0
 
 h1
@@ -125,6 +159,7 @@ body
 		ul.selected, ul.selected ul
 			display block
 		ul.level-1 > li a.level-1-title
+			openSans()
 			font-weight 800
 			font-size 15px
 			color darkGrey
@@ -150,6 +185,9 @@ body
 			font-weight 400
 		ul.level-3 li.selected a
 			color selected
+
+.plugin-image img
+	width 440px
 
 @import "chapter.styl";
 @import "index.styl";
