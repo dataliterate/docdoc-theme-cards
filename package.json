@@ -26,7 +26,7 @@
     "nib": "~1.0.2"
   },
   "dependencies": {
-    "ejs": "~0.8.4",
+    "ejs": "~> 2.5.5",
     "consolidate": "~0.9.1"
   }
 }
